@@ -28,36 +28,18 @@ describe("set zero timeout spec", function(){
 
 
     it("should call bunch of handlers", function(){
-      var count = 0;
+      var count = 0, i, times = 500;
 
-      setZeroTimeout(function(){
-        count += 1;
-      });
-
-      setZeroTimeout(function(){
-        count += 1;
-      });
-
-      setZeroTimeout(function(){
-        count += 1;
-      });
-
-      setZeroTimeout(function(){
-        count += 1;
-      });
-
-      setZeroTimeout(function(){
-        count += 1;
-      });
-
-      setZeroTimeout(function(){
-        count += 1;
-      });
+      for (i = 1; i <= times; i++) {
+        setZeroTimeout(function(){
+          count += 1;
+        });
+      }
 
       waits(1);
 
       runs(function(){
-        expect(count).toBe(6);
+        expect(count).toBe(times);
       });
     });
   });
