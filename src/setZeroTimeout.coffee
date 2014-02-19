@@ -1,4 +1,4 @@
-@setZeroTimeout ||= new () ->
+@setZeroTimeout ||= new((window) ->
   timeouts = []
   messageName = "zero-timeout-message-" + new Date().getTime()
 
@@ -14,3 +14,4 @@
   (fn) ->
     timeouts.push fn
     return window.postMessage messageName, "*"
+)(window)

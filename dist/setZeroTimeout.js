@@ -1,4 +1,4 @@
-this.setZeroTimeout || (this.setZeroTimeout = new function() {
+this.setZeroTimeout || (this.setZeroTimeout = new (function(window) {
   var handleMessage, messageName, timeouts;
   timeouts = [];
   messageName = "zero-timeout-message-" + new Date().getTime();
@@ -15,4 +15,4 @@ this.setZeroTimeout || (this.setZeroTimeout = new function() {
     timeouts.push(fn);
     return window.postMessage(messageName, "*");
   };
-});
+})(window));
